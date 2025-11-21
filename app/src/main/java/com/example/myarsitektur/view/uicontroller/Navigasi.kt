@@ -14,6 +14,33 @@ fun SiswaApp(
     viewModel: SiswaViewModel = viewModel(),
     navController: NavHostController = rememberNavController()
 ) {
+    Scaffold { isiRuang ->
+        //edit 2 : Tambahkan variabel uiState
+        val uiState = viewModel.statusUI.collectAsState()
+        NavHost(
+            navController = navController,
+            startDestination = Navigasi.Formulir.name,
 
-}
+            modifier = Modifier.padding(paddingValues = isiRuang)
+        ) {
+            Scaffold { isiRuang ->
+                //edit 2 : Tambahkan variabel uiState
+                val uiState = viewModel.statusUI.collectAsState()
+                NavHost(
+                    navController = navController,
+                    startDestination = Navigasi.Formulir.name,
+
+                    modifier = Modifier.padding(paddingValues = isiRuang)) {
+                    composable(route = Navigasi.Formulir.name) {
+                        //edit 3 : Tambahkan variable konteks
+                        val konteks = LocalContext.current
+                        FormSiswa(
+                            pilihanJK = DataJK.JenisJK,
+                            onSubmitButtonClicked = {
+                                viewModel.setSiswa(it)
+                                navController.navigate(route = Navigasi.Detail.name)
+                            }
+                        )
+                    }
+
 
