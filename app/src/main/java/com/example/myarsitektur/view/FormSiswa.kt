@@ -6,4 +6,10 @@ fun FormSiswa(
     pilihanJK: List<String>,
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
     modifier: Modifier = Modifier
-)
+) {
+    var txtNama by rememberSaveable { mutableStateOf(value = "") }
+    var txtAlamat by remember { mutableStateOf(value = "") }
+    var txtGender by remember { mutableStateOf(value = "") }
+    val listData: MutableList<String> = mutableListOf(txtNama, txtGender, txtAlamat)
+
+}
