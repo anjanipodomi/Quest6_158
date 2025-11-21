@@ -81,11 +81,10 @@ fun FormSiswa(
                 onClick = {
                     onSubmitButtonClicked(mutableListOf(txtNama, txtGender, txtAlamat))
                 }
-            )
+            ) {
+                Text(text = stringResource(id = R.string.submit))
 
-
-
-
+            }
         }
     }
 
